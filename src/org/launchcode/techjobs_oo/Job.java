@@ -53,29 +53,39 @@ public class Job {
         if(getName() == null && getEmployer() == null && getLocation() == null && getPositionType() == null && getCoreCompetency() == null) {
             return "OOPS! This job does not seem to exist.";
         }
-        if(getName() == "") {
-            setName("Data not available");
+        String aName = getName();
+        String anEmployer = getEmployer().getValue();
+        String aLocation = getLocation().getValue();
+        String aPosType = getPositionType().getValue();
+        String aCC = getCoreCompetency().getValue();
+        String empty = "Data not available";
+        if(aName.equals("")) {
+            aName = empty;
         }
-        if(employer.getValue() == "") {
-            setEmployer(new Employer("Data not available"));
+        if(anEmployer.equals("")) {
+            anEmployer = empty;
         }
-        if(location.getValue() == "") {
-            setLocation(new Location("Data not available"));
+        if(aLocation.equals("")) {
+            aLocation = empty;
         }
-        if(positionType.getValue() == "") {
-            setPositionType(new PositionType("Data not available"));
+        if(aPosType.equals("")) {
+            aPosType = empty;
         }
-        if(coreCompetency.getValue() == "") {
-            setCoreCompetency(new CoreCompetency("Data not available"));
+        if(aCC.equals("")) {
+            aCC = empty;
         }
         return (
                 "ID: " + this.getId() + "\n"
-                + "Name: " + this.getName() + "\n"
-                + "Employer: " + this.getEmployer() + "\n"
-                + "Location: " + this.getLocation() + "\n"
-                + "Position Type: " + this.getPositionType() + "\n"
-                + "Core Competency: " + this.getCoreCompetency()
+                + "Name: " + aName + "\n"
+                + "Employer: " + anEmployer + "\n"
+                + "Location: " + aLocation + "\n"
+                + "Position Type: " + aPosType + "\n"
+                + "Core Competency: " + aCC
         );
+    }
+
+    public static void resetId() {
+        nextId = 1;
     }
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID

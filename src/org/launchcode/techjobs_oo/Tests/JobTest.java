@@ -1,7 +1,9 @@
 package org.launchcode.techjobs_oo.Tests;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.Before;
 import org.launchcode.techjobs_oo.*;
+import org.launchcode.techjobs_oo.Job;
 
 import static org.junit.Assert.*;
 
@@ -22,6 +24,11 @@ public class JobTest {
 
     }
 
+    @After
+    public void resetJobId() {
+        Job.resetId();
+    }
+
     @Test
     public void testSettingJobId() {
         assertFalse(emptyJob1.getId() == emptyJob2.getId());
@@ -29,6 +36,8 @@ public class JobTest {
 
     @Test
     public void testJobConstructorSetsAllFields() {
+        assertEquals(3, test_job1.getId());
+        assertEquals(4, test_job2.getId());
         assertEquals("Product Tester", test_job2.getName());
         assertTrue(test_job2.getEmployer() instanceof Employer);
         assertTrue(test_job2.getLocation() instanceof Location);
